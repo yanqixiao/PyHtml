@@ -98,11 +98,3 @@ class Tag:
         _sub += ''.join(str(_tag) for _tag in self._tags)
         _ret = " ".join([f'''{_key}="{_value}"''' for _key, _value in _arg.items() if len(_value) > 0])
         return f"<{_tag} {_ret}>{_sub}</{_tag}>"
-
-    @property
-    def id(self):\
-        return self._id
-
-    @id.setter
-    def id(self, value):
-        self._id = value

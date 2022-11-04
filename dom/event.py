@@ -22,7 +22,6 @@ class Event:
 class WindowEvent(Event):
     '''
     描述: 由窗口触发该事件 (适用于 <body> 标签)
-    例如: ----
     '''
     def __init__(self) -> None:
         self._onafterprint:str = ""
@@ -130,7 +129,6 @@ class WindowEvent(Event):
 class FormEent(Event):
     '''
     描述: 表单事件在HTML表单中触发 (适用于所有 HTML 元素, 但该HTML元素需在form表单内)
-    例如: ----
     '''
     def __init__(self) -> None:
         super().__init__()

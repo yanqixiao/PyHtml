@@ -17,6 +17,7 @@ sys.path.append( "" if hasattr(sys, "_MEIPASS") else __file__[0:__file__.index("
 
 from typing import Dict, List
 from Src.Css.Base import *
+from Src.Dom.Event import *
 
 
 class Dom:
@@ -148,15 +149,24 @@ class Dom:
         描述: 标签列表 \n
         例如: <div accesskey="c" class="test" id="123"><div id="d1">dfadsfasfsdf</div></div>
         '''
+        self._events:List[Event] = []
+        '''
+        描述: Dom支持的事件
+        例如: <body onafterprint="printmsg()">
+        '''
+
+        self._specialKeys = ["_text", "_tags", "_style", "_events", "_specialKeys"]
         
 
     def __str__(self) -> str:
         _tagName = type(self).__name__.lower()
-        _specialKeys = ["_text", "_tags", "_style"]
-        _attrDct = {_key.replace("_", ""): _value for _key, _value in self.__dict__.items() if _key not in _specialKeys}
+        _attrDct = {_key.replace("_", ""): _value for _key, _value in self.__dict__.items() if _key not in self._specialKeys}
         _content = self._text if self._text else "" + ''.join(str(_tag) for _tag in self._tags)
         _attr = " ".join([f'''{_key}="{_value}"''' for _key, _value in _attrDct.items() if len(_value) > 0])
         _attr = " " + _attr if len(_attr) > 0 else "" 
+        _event = " ".join(str(_event) for _event in self._events)
         _style = "".join(str(_s) for _s in self._style)
         _style = f''' style="{_style}" ''' if len(_style) > 0 else ""
-        return f"<{_tagName}{_attr}{_style}>{_content}</{_tagName}>"
+        _other = ' '.join(_item for _item in [_attr, _event, _style] if len(_item)>0)
+        _other = "" if len(_other) == 0 else f" {_other}"
+        return f"<{_tagName}{_other}>{_content}</{_tagName}>"

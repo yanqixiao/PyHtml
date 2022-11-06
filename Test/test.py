@@ -15,17 +15,6 @@
 import os, sys
 sys.path.append( "" if hasattr(sys, "_MEIPASS") else __file__[0:__file__.index("test")] )
 
-from Src.Dom.Div import *
 
 if __name__ == "__main__":
-    
-    d = Div()
-    d._accesskey = "c"
-    d.id = "123"
-    d._class = "test"
-    d1 = Div()
-    d1._id="d1"
-    d1._text = "dfadsfasfsdf"
-    d._tags = [d1]
-    print(d)
-    os.system("pause")
+    print(list(range(1, 6)))

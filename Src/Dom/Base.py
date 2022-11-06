@@ -82,7 +82,61 @@ class Dom:
             *text: 规定元素的工具提示文本(tooltip text) \n
         例如: <p><abbr title="世界卫生组织">WHO</abbr> 成立于 1948。</p>
         '''
+        self._translate:str = ""
+        '''
+        描述: 指定是否一个元素的值在页面载入时是否需要翻译 \n
+            *yes: 规定元素内容需要翻译 \n
+            *no: 规定元素内容不需要翻译 \n  
+        例如: <p translate="no">这个段落不能翻译。</p>
+        '''
         
+        self._spellcheck:str = ""
+        '''
+        描述: 检测元素是否拼写错误 \n
+            *true: 规定应当对元素的文本进行拼写检查。\n
+            *false: 规定不应对元素的文本进行拼写检查。\n
+        例如: <p contenteditable="true" spellcheck="true">这是可编辑的段落。请试着编辑文本。</p>
+        '''
+        self._hidden:str = ""
+        '''
+        描述: 规定对元素进行隐藏。 \n
+        例如: <p hidden="hidden">这是一段隐藏的段落。</p>
+        '''
+        self._dropzone:str = ""
+        '''
+        描述: 指定是否将数据复制，移动，或链接，或删除 \n
+            *copy: 拖动数据会导致被拖数据产生副本。\n
+            *move: 拖动数据会导致被拖数据移动到新位置。\n
+            *link: 拖动数据会生成指向原始数据的链接。\n
+        例如: <div dropzone="copy"></div>
+        '''
+        self._draggable:str = ""
+        '''
+        描述: 指定某个元素是否可以拖动 \n
+            *true: 规定元素是可拖动的。\n
+            *false: 规定元素是不可拖动的。\n
+            *auto: 使用浏览器的默认特性\n
+        例如: <p draggable="true">这是一段可移动的段落。请把该段落拖入上面的矩形。</p>
+        '''
+        self._contextmenu:str = ""
+        '''
+        描述: 指定一个元素的上下文菜单。当用户右击该元素，出现上下文菜单 \n
+            *menu_id: 要打开的 <menu> 元素的 id。\n
+        例如: <div contextmenu="mymenu">
+                <menu type="context" id="mymenu">
+                <menuitem label="Refresh"></menuitem>
+                <menuitem label="Twitter"></menuitem>
+                </menu>
+            </div>
+        '''
+        self._contenteditable:str = ""
+        '''
+        描述: 规定是否可编辑元素的内容。\n
+            *true: 指定元素是可编辑的\n
+            *false: 指定元素是不可编辑的\n
+        例如: <p contenteditable="true">这是一个可编辑段落。</p>
+        '''
+
         # 非html属性
         self._text:str = ""
         '''
@@ -94,6 +148,7 @@ class Dom:
         描述: 标签列表 \n
         例如: <div accesskey="c" class="test" id="123"><div id="d1">dfadsfasfsdf</div></div>
         '''
+        
 
     def __str__(self) -> str:
         _tagName = type(self).__name__.lower()

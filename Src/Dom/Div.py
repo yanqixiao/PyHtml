@@ -12,10 +12,13 @@
 
 # here put the import lib
 
-from tag import *
+import sys
+sys.path.append( "" if hasattr(sys, "_MEIPASS") else __file__[0:__file__.index("Src")] )
+
+from Src.Dom.Base import *
 
 
-class Div(Tag):
+class Div(Dom):
     def __init__(self) -> None:
         super().__init__()
         self._align:str = ""
@@ -29,7 +32,7 @@ class Div(Tag):
         '''
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":    
     d = Div()
     d._accesskey = "c"
     d.id = "123"

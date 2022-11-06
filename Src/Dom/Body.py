@@ -12,10 +12,14 @@
 
 # here put the import lib
 
-from event import WindowEvent
-from tag import *
+import sys
+sys.path.append( "" if hasattr(sys, "_MEIPASS") else __file__[0:__file__.index("Src")] )
 
-class Body(Tag):
+from Src.Dom.Base import *
+from Src.Dom.Event import WindowEvent
+
+
+class Body(Dom):
     def __init__(self) -> None:
         super().__init__()
         self._events:List[WindowEvent] = []

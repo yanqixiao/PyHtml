@@ -11,7 +11,11 @@
 '''
 
 # here put the import lib
-from style import *
+
+import sys
+sys.path.append( "" if hasattr(sys, "_MEIPASS") else __file__[0:__file__.index("Src")] )
+
+from Src.Css.Base import *
 
 
 class Text(Style):

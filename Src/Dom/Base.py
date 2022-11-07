@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
     h1 = H(1)
     h1._text = "test h1"
-    print(h1)
+    print((h1._class).__annotations__)
 
     p = P()
     p._text = "test p"

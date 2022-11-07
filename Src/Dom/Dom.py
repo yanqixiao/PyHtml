@@ -160,7 +160,7 @@ class Dom:
 
     def __str__(self) -> str:
         _tagName = type(self).__name__.lower()
-        _attrDct = {_key.replace("_", ""): _value for _key, _value in self.__dict__.items() if _key not in self._specialKeys}
+        _attrDct = {_key.replace("_", "-")[1:]: _value for _key, _value in self.__dict__.items() if _key not in self._specialKeys}
         _content = self._text if self._text else "" + ''.join(str(_tag) for _tag in self._tags)
         _attr = " ".join([f'''{_key}="{_value}"''' for _key, _value in _attrDct.items() if len(_value) > 0])
         _attr = " " + _attr if len(_attr) > 0 else "" 

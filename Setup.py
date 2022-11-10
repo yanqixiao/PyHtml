@@ -39,4 +39,5 @@ if __name__ == "__main__":
     _workpath = f"--workpath={os.path.join(_dir, 'Build')}"
     _target = os.path.join(_dir, "test/test.py")
     _name = "--name=pyhtmltest"
-    run([_target, _name, '-F', "--noupx", _distpath, _workpath, _specpath])
+    _package = f"--paths={_dir}"
+    run([_target, _name, '-F', "--noupx", _distpath, _workpath, _specpath, _package])
